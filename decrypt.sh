@@ -6,7 +6,7 @@ function decrypt
         if [ -f $1 ]; then
             if [ ! -f $basefilename ]; then 
                 echo "decrypting $1"
-                time openssl enc -d -aes-256-cbc -a -nopad -in $1 -out $basefilename -pass pass:$password
+                time openssl enc -d -aes-256-cbc -a -in $1 -out $basefilename -pass pass:$password
             else
                 echo "already decrypted ... skipping $1"
             fi
