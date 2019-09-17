@@ -3,5 +3,5 @@ for filename in `ls *.bin`;
 do
   basefilename=`basename $filename .bin`
   unscrambled_filename=`echo $basefilename | openssl enc -a -d`
-  echo "[$filename] [$unscrambled_filename]"
+  printf "%-50s | %-50s\n" $filename $unscrambled_filename 
 done
