@@ -1,11 +1,15 @@
-#!/usr/bin/bash
+#!/bin/bash
 function encrypt
 {
 	filename=$1
-	echo $filename
-	if [ ! -f $filename.bin ]; then
+
+	#obtain scrambled file name
+	scrambled_filename=`echo -n $filename | openssl enc -a`
+
+	# encrypt file
+	if [ ! -f $scrambled_filename.bin ]; then
         echo "encrypting $filename"
-        time openssl enc -aes-256-cbc -a -salt -in $filename -out $filename.bin -pass pass:$password
+        time openssl enc -aes-256-cbc -a -salt -in $filename -out $scrambled_filename.bin -pass pass:$password
     else
         echo "Skipping ... $filename already encrypted"
     fi
@@ -21,7 +25,7 @@ if [ $# -eq 0 ]; then
 	done
 else
     if [ $# -eq 1 ]; then
-        encrypt $1 
+        encrypt $1
     else
         echo "Usage: encrypt.sh [filename]"
         echo "no arguments will decrypt all files"
@@ -29,5 +33,3 @@ else
 fi
 
 #rm *.avi
-
-
