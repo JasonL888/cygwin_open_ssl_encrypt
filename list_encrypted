@@ -1,0 +1,7 @@
+#!/bin/bash
+for filename in `ls *.bin`;
+do
+  basefilename=`basename $filename .bin`
+  unscrambled_filename=`echo $basefilename | openssl enc -a -d`
+  echo "[$filename] [$unscrambled_filename]"
+done
