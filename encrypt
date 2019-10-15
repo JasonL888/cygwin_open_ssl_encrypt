@@ -9,7 +9,7 @@ function encrypt
 	# encrypt file
 	if [ ! -f $scrambled_filename.bin ]; then
         echo "encrypting $filename"
-        time openssl enc -aes-256-cbc -a -salt -in $filename -out $scrambled_filename.bin -pass pass:$password
+        time openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 1000 -a -salt -in $filename -out $scrambled_filename.bin -pass pass:$password
     else
         echo "Skipping ... $filename already encrypted"
     fi
