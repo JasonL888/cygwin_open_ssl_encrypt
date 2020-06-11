@@ -1,21 +1,4 @@
 #!/bin/bash
-#function decrypt
-#{
-#        basefilename=`basename $1 .bin`
-#        echo $basefilename
-#        if [ -f $1 ]; then
-#            #unscrambled_filename=`echo $basefilename | openssl enc -a -d`
-#            #echo $unscrambled_filename
-#                echo "decrypting $1"
-#                time openssl enc -d -aes-256-cbc -a -in $1 -out $basefilename -pass pass:$password
-#            else
-#                echo "already decrypted ... skipping $1"
-#            fi
-#        else
-#            echo "no such file[$1] ... skipping $1"
-#        fi
-#}
-
 function decrypt
 {
         basefilename=`basename $1 .bin`
